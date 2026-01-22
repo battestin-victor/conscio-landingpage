@@ -32,6 +32,9 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         h1, h2, h3, h4, .logo { font-family: 'Montserrat', sans-serif; }
@@ -41,6 +44,7 @@
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
+            width: 100%;
         }
 
         /* --- HEADER --- */
@@ -52,7 +56,7 @@
         }
 
         .logo {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--text-main);
             letter-spacing: -0.5px;
@@ -67,24 +71,23 @@
             position: relative;
         }
 
-        /* Glow mais discreto e profissional */
         .hero::before {
             content: '';
             position: absolute;
             top: -120px;
             left: 50%;
             transform: translateX(-50%);
-            width: 700px;
+            width: 800px;
             height: 500px;
-            background: radial-gradient(circle, rgba(108, 92, 231, 0.10) 0%, rgba(15, 32, 39, 0) 60%);
+            background: radial-gradient(circle, rgba(108, 92, 231, 0.12) 0%, rgba(15, 32, 39, 0) 65%);
             z-index: -1;
             pointer-events: none;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            font-weight: 600;
-            line-height: 1.2;
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.1;
             margin-bottom: 24px;
             color: var(--text-main);
         }
@@ -92,24 +95,24 @@
         .hero p {
             font-size: 1.15rem;
             color: var(--text-muted);
-            max-width: 650px;
+            max-width: 680px;
             margin: 0 auto 40px;
             font-weight: 400;
         }
 
-        /* Badge "Em Breve" (Não clicável) */
         .status-pill {
             display: inline-flex;
             align-items: center;
-            background-color: rgba(255, 255, 255, 0.05);
+            background-color: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-subtle);
             color: var(--text-muted);
-            padding: 12px 30px;
-            border-radius: 6px;
-            font-size: 0.95rem;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
             font-weight: 500;
             letter-spacing: 0.5px;
             cursor: default;
+            backdrop-filter: blur(10px);
         }
 
         .status-dot {
@@ -117,37 +120,46 @@
             height: 8px;
             background-color: var(--accent);
             border-radius: 50%;
-            margin-right: 10px;
-            box-shadow: 0 0 10px rgba(108, 92, 231, 0.5);
+            margin-right: 12px;
+            box-shadow: 0 0 12px rgba(108, 92, 231, 0.6);
         }
 
         /* --- FEATURES GRID --- */
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
             padding-bottom: 120px;
+            align-items: stretch; 
         }
 
         .card {
             background: var(--bg-card);
-            padding: 40px 32px;
-            border-radius: 8px; /* Cantos menos arredondados = mais formal */
+            /* Reduzi o padding lateral de 32px para 24px para caber mais texto */
+            padding: 40px 24px; 
+            border-radius: 12px;
             border: 1px solid var(--border-subtle);
-            transition: border-color 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .card:hover {
-            border-color: rgba(108, 92, 231, 0.4);
+            border-color: rgba(108, 92, 231, 0.5);
+            transform: translateY(-5px);
         }
 
         .card h3 {
-            font-size: 1.25rem;
+            /* Fonte reduzida de 1.4rem para 1.25rem para evitar quebras */
+            font-size: 1.25rem; 
             margin-bottom: 16px;
             color: var(--text-main);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            font-weight: 600;
         }
 
         .card h4 {
@@ -159,14 +171,14 @@
             gap: 12px;
         }
         
-        /* Ícones minimalistas via CSS/Texto para leveza */
         .card h3::before {
             content: '';
             display: block;
             width: 4px;
             height: 24px;
             background-color: var(--accent);
-            border-radius: 2px;
+            border-radius: 4px;
+            flex-shrink: 0;
         }
 
         .card h4::before {
@@ -181,25 +193,39 @@
         .card p {
             color: var(--text-muted);
             font-size: 0.95rem;
-            line-height: 1.7;
+            line-height: 1.6;
+            /* Garante que o texto ocupe o espaço restante harmoniosamente */
+            flex-grow: 1; 
         }
 
         /* --- FOOTER --- */
         footer {
+            margin-top: auto;
             border-top: 1px solid var(--border-subtle);
-            padding: 40px 0;
+            padding: 50px 0;
             text-align: center;
             color: var(--text-muted);
             font-size: 0.85rem;
         }
 
-        footer a { color: var(--text-main); text-decoration: none; }
-        /*footer a:hover { text-decoration: underline; }*/
+        footer a { 
+            color: var(--text-main); 
+            text-decoration: none; 
+            border-bottom: 1px solid transparent;
+            transition: 0.2s;
+        }
+        
+        footer a:hover { 
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
-            .hero { padding: 60px 0; }
+            .hero { padding: 60px 0 80px; }
+            .features { gap: 20px; }
+            .card { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -240,9 +266,9 @@
 
         <footer>
             <p>&copy; 2026 Conscio Tecnologia. Todos os direitos reservados.</p>
-            <p style="margin-top: 8px;">Taubaté, SP</p>
+            <p style="margin-top: 10px;">Taubaté, SP</p>
             <p style="margin-top: 15px;">
-                <a>contato@conscio.com.br</a>
+                <a href="mailto:contato@conscio.com.br">contato@conscio.com.br</a>
             </p>
         </footer>
 
