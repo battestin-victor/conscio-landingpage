@@ -34,7 +34,7 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, .logo { font-family: 'Montserrat', sans-serif; }
+        h1, h2, h3, h4, .logo { font-family: 'Montserrat', sans-serif; }
         
         /* --- LAYOUT UTILITIES --- */
         .container {
@@ -149,9 +149,27 @@
             align-items: center;
             gap: 12px;
         }
+
+        .card h4 {
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
         
         /* Ícones minimalistas via CSS/Texto para leveza */
         .card h3::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 24px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        .card h4::before {
             content: '';
             display: block;
             width: 4px;
