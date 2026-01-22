@@ -61,20 +61,28 @@ Cores funcionais para comunicar o status das requisições fiscais.
 
 ---
 
-## 3. UI Rules (Física da Interface)
+## 3. Componentização & Física (UI Rules)
 
-### Bordas & Squircles
-* **Border Radius:** `8px` (Padrão) | `12px` (Cards Grandes).
-* **Conceito:** Suavidade tecnológica. Evitar cantos vivos (agressivos) ou redondos demais (infantis).
+### Bordas & "Squircles"
+Não somos quadrados (velhos), nem redondos demais (infantis).
+* **Border Radius Padrão:** `8px` (Inputs, Botões pequenos).
+* **Border Radius Cards:** `12px` ou `16px` (Cards grandes, Modais).
+* **Conceito:** Suavidade tecnológica.
 
 ### Espaçamento (Grid de 4px)
-Todo espaçamento deve ser múltiplo de 4.
+Para manter o alinhamento perfeito, usamos múltiplos de 4.
+* **Margens Pequenas:** `4px`, `8px` (distância entre label e input).
+* **Margens Médias:** `16px`, `24px` (distância entre elementos internos do card).
+* **Margens Grandes:** `32px`, `40px` (distância entre seções).
 
-* `4px` (Tight)
-* `8px` (XS)
-* `16px` (M - Padrão)
-* `24px` (L)
-* `32px` (XL)
+### Feedback Visual (Affordance)
+* **Botões:** Devem ter um estado de *Hover* (mudança de cor) e *Active* (leve "afundamento" ou clique).
+* **Loading:** Nunca deixe a interface congelada. Use *Skeleton Screens* (esqueletos cinzas pulsando) ou *Spinners* Roxo/Indigo para indicar processamento.
 
 ---
+
+*Este Design System é um organismo vivo. Mantenha-o atualizado conforme o produto evolui.*
+
+---
+
 *© 2026 Conscio Tecnologia.*
