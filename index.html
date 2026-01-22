@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conscio. | Inteligência Fiscal</title>
+    <meta name="description" content="Centralização e processamento de NFS-e (Prestados e Tomados) para escritórios de contabilidade.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%236C5CE7%22/><text y=%22.9em%22 font-size=%2290%22 x=%2250%22 text-anchor=%22middle%22 fill=%22white%22>C</text></svg>">
+
+    <style>
+        /* --- BRAND VARIABLES --- */
+        :root {
+            --bg-deep: #0F2027;
+            --bg-card: #182B34;
+            --accent: #6C5CE7;
+            --text-main: #F5F7FA;
+            --text-muted: #A0AAB5;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+        }
+
+        /* --- RESET & BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .logo { font-family: 'Montserrat', sans-serif; }
+        
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- HEADER --- */
+        header {
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span { color: var(--accent); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 80px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Glow mais discreto e profissional */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 700px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(108, 92, 231, 0.10) 0%, rgba(15, 32, 39, 0) 60%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 40px;
+            font-weight: 400;
+        }
+
+        /* Badge "Em Breve" (Não clicável) */
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            cursor: default;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            margin-right: 10px;
+            box-shadow: 0 0 10px rgba(108, 92, 231, 0.5);
+        }
+
+        /* --- FEATURES GRID --- */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            padding-bottom: 120px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 40px 32px;
+            border-radius: 8px; /* Cantos menos arredondados = mais formal */
+            border: 1px solid var(--border-subtle);
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(108, 92, 231, 0.4);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        /* Ícones minimalistas via CSS/Texto para leveza */
+        .card h3::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 24px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid var(--border-subtle);
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer a { color: var(--text-main); text-decoration: none; }
+        /*footer a:hover { text-decoration: underline; }*/
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero { padding: 60px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header>
+            <div class="logo">Conscio<span>.</span></div>
+        </header>
+
+        <section class="hero">
+            <h1>Gestão unificada de<br>NFS-e e Inteligência Fiscal.</h1>
+            <p>Solução desktop para escritórios de contabilidade. Centralize Serviços Prestados e Tomados, elimine o download manual de XMLs e otimize o fechamento mensal.</p>
+            
+            <div class="status-pill">
+                <div class="status-dot"></div>
+                Disponível em breve
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="card">
+                <h3>Prestados e Tomados</h3>
+                <p>Cobertura completa. Atendemos desde o pequeno cliente sem ERP, capturando serviços prestados, até a auditoria de serviços tomados para grandes volumes. Tudo em uma única interface.</p>
+            </div>
+
+            <div class="card">
+                <h3>Segurança e Compliance</h3>
+                <p>Arquitetura descentralizada. O processamento ocorre localmente na infraestrutura do escritório. Certificados digitais e dados fiscais nunca são expostos a ambientes em nuvem de terceiros.</p>
+            </div>
+
+            <div class="card">
+                <h3>Consulta Facilitada</h3>
+                <p>Conexão direta com prefeituras via WebService. Simplificamos a extração de dados complexos, entregando visualização limpa e arquivos prontos para importação contábil.</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Conscio Tecnologia. Todos os direitos reservados.</p>
+            <p style="margin-top: 15px;">
+                <a>contato@conscio.com.br</a>
+            </p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
